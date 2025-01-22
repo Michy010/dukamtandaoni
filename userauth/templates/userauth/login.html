@@ -1,0 +1,28 @@
+{% extends 'duka/base.html' %}
+{% block title %}Login{% endblock %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<section class="body">
+  <div class="auth-container">
+    <h1>Login</h1>
+    <form method="post">
+      {% csrf_token %}
+      <label for="username">User Name</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">Login</button>
+      <div class="message">
+        {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{message}}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </form>
+  </div>
+</section>
+{% endblock %}

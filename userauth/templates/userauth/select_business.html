@@ -1,0 +1,14 @@
+{% extends 'duka/base.html' %}
+{% block title %}select business{% endblock %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <div class="auth-container">
+    <h1>Select Your Business</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Proceed</button>
+    </form>
+  </div>
+{% endblock %}

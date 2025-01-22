@@ -1,0 +1,35 @@
+{% extends 'duka/base.html' %}
+{% block title %}register{% endblock %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+  <section class="body-signup">
+    <div class="auth-container">
+      <h1>Register</h1>
+      <form method="post" action="{% url 'userauth:signup' %}" class="register-form" id="myform">
+        {% csrf_token %}
+        <div class="person-register-infos">
+          {% for field in user_form %}
+          {{field.label_tag}}
+          {{field}}
+          {% endfor %}
+        </div>
+        <div class="business-register-infos">
+          {% for field in business_form %}
+          {{field.label_tag}}
+          {{field}}
+          {% endfor %}
+        </div>
+      </form>
+      <div class="submitt-btn"><button type="submit" form="myform">Register</button></div>
+      <div class="message">
+        {% if messages %}
+        <ul>
+          {% for messege in messages %}
+            <li>{{message}}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+  </section>
+{% endblock %}
